@@ -18,5 +18,8 @@
     "comma-dangle": ["error", "always-multiline"],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }]
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": "eslint:recommended"
 }
