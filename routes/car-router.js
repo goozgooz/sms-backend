@@ -10,3 +10,13 @@ carRoutes.post('/api/cars', jsonParser, (req,res,next) => {
     .catch(next);
 });
 
+// get
+
+// delete
+
+// patch/update 
+
+// test
+
+
+// http POST localhost:3000/api/cars < bmw.json

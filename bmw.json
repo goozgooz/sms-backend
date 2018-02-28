@@ -16,3 +16,5 @@
   "titleStatus": "clean",
   "transmission": "manual"
 }
+
+// http POST localhost:3000/api/cars < bmw.json
