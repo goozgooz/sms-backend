@@ -3,7 +3,10 @@
     "err": true,
     "req": true,
     "res": true,
-    "next": true
+    "next": true,
+    "beforeAll": true,
+    "expect": true,
+    "afterAll": true
   },
   "env": {
     "es6": true,

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jes -i --coverage",
+    "test": "jest -i --coverage",
     "watch": "nodemon index.js",
     "start": "node index.js",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db",

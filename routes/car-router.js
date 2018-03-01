@@ -18,5 +18,4 @@ carRoutes.post('/api/cars', jsonParser, (req,res,next) => {
 
 // test
 
-
 // http POST localhost:3000/api/cars < bmw.json
