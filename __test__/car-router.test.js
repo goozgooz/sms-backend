@@ -19,6 +19,7 @@ describe('car-router', () => {
         .send(carMock.bmw)
         .then(res => {
           expect(res.status).toEqual(200);
+          expect(res.body._id).toBeTruthy();
         });
     });
   });
