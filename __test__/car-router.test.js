@@ -16,7 +16,7 @@ describe('car-router', () => {
   let carKeys = Object.keys(carMock.bmw);
 
   describe('POST /api/cars', () => {
-    test('200', () => {
+    test.skip('200', () => {
       return superagent.post(`${apiURL}/api/cars`)
         .send(carMock.bmw)
         .then(res => {
@@ -28,7 +28,7 @@ describe('car-router', () => {
         });
     });
 
-    test('400', () => {
+    test.skip('400', () => {
       return superagent.post(`${apiURL}/api/cars`)
         .send({
           cools: 'beans',
@@ -42,10 +42,11 @@ describe('car-router', () => {
 
   describe('GET /api/cars', () => {
     test('200', () => { 
-      return superagent.get(`${apiURL}/apir/cars`)
+      carMock.createMany();
+      return superagent.get(`${apiURL}/api/cars`)
         .then(res => {
           expect(res.status).toEqual(200);
-          expect(res.body).toBeTruthy();
+          expect(res.body.length).toEqual(2);
         });
     });
   });

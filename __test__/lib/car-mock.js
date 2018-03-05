@@ -2,6 +2,13 @@
 
 const Car = require('../../models/cars.js');
 
+let create = () => new Car(bmw).save();
+
+let createMany = () => {
+  new Car(bmw).save();
+  new Car(ford).save();
+};
+
 let remove = () => Car.remove({});
 
 const bmw = {
@@ -42,4 +49,4 @@ const ford ={
   transmission: 'auto',  
 };
 
-module.exports = {remove, bmw, ford};
+module.exports = {create, createMany, remove, bmw, ford};
