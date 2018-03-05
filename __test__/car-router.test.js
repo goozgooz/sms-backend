@@ -13,6 +13,8 @@ describe('car-router', () => {
   afterAll(server.stop);
   afterEach(carMock.remove);
 
+  let carKeys = Object.keys(carMock.bmw);
+
   describe('POST /api/cars', () => {
     test('200', () => {
       return superagent.post(`${apiURL}/api/cars`)
@@ -20,6 +22,30 @@ describe('car-router', () => {
         .then(res => {
           expect(res.status).toEqual(200);
           expect(res.body._id).toBeTruthy();
+          for(let key of carKeys) {
+            expect(res.body.key).toEqual(carMock.bmw.key);
+          }
+        });
+    });
+
+    test('400', () => {
+      return superagent.post(`${apiURL}/api/cars`)
+        .send({
+          cools: 'beans',
+          herp: 'derp',
+        })
+        .catch(res => {
+          expect(res.status).toEqual(400);
+        });
+    });
+  });
+
+  describe('GET /api/cars', () => {
+    test('200', () => { 
+      return superagent.get(`${apiURL}/apir/cars`)
+        .then(res => {
+          expect(res.status).toEqual(200);
+          expect(res.body).toBeTruthy();
         });
     });
   });
