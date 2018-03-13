@@ -16,7 +16,7 @@ describe('car-router', () => {
   let carKeys = Object.keys(carMock.bmw);
 
   describe('POST /api/cars', () => {
-    test.skip('200', () => {
+    test('200', () => {
       return superagent.post(`${apiURL}/api/cars`)
         .send(carMock.bmw)
         .then(res => {
@@ -28,7 +28,7 @@ describe('car-router', () => {
         });
     });
 
-    test.skip('400', () => {
+    test('400', () => {
       return superagent.post(`${apiURL}/api/cars`)
         .send({
           cools: 'beans',
@@ -51,5 +51,101 @@ describe('car-router', () => {
     });
   });
 
+  describe('GET /api/cars/:id', () => {
+    test('200', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.get(`${apiURL}/api/cars/${car._id}`);
+        })
+        .then(res => {
+          expect(res.status).toEqual(200);
+          for(let key of carKeys){
+            expect(res.body.key).toEqual(carMock.bmw.key);
+          }
+        });
+    });
+
+    test('404', () => {
+      return superagent.get(`${apiURL}/api/cars/507f191e810c19729de860ea`)
+        .then(Promise.reject)
+        .catch(res => {
+          expect(res.status).toEqual(404);
+        });
+    });
+  });
+
+  describe('DELETE /api/cars/:id', () => {
+    test('200', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.delete(`${apiURL}/api/cars/${car._id}`);
+        })
+        .then(res => {
+          expect(res.status).toEqual(204);
+        });
+    });
+
+    test('404', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.delete(`${apiURL}/api/cars/507f191e810c19729de860ea`);
+        })
+        .then(Promise.reject)
+        .catch(res => {
+          expect(res.status).toEqual(404);
+        });
+    });
+
+    test('404', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.delete(`${apiURL}/api/cars/1234`);
+        })
+        .then(Promise.reject)
+        .catch(res => {
+          expect(res.status).toEqual(404);
+        });
+    });
+
+  });
+
+  describe('PATCH /api/cars/:id', () => {
+    test('200', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.patch(`${apiURL}/api/cars/${car._id}`)
+            .send({make:'tesla', model:'model 3', year:'2018'});
+        })
+        .then(res => {
+          expect(res.status).toEqual(200);
+          expect(res.body.make).toEqual('tesla');
+          expect(res.body.model).toEqual('model 3');
+          expect(res.body.year).toEqual(2018);
+        });
+    });
+
+    test('400', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.patch(`${apiURL}/api/cars/${car._id}`)
+            .send({make:''});
+        })
+        .then(Promise.reject)
+        .catch(res => {
+          expect(res.status).toEqual(400);
+        });
+    });
+
+    test('404', () => {
+      return carMock.create()
+        .then(car => {
+          return superagent.patch(`${apiURL}/api/cars/507f191e810c19729de860ea`);
+        })
+        .then(Promise.reject)
+        .catch(res => {
+          expect(res.status).toEqual(404);
+        });
+    });
+  });
 });
 

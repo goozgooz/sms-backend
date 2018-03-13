@@ -31,7 +31,6 @@ carRoutes.patch('/api/cars/:id', jsonParser, (req,res,next) => {
   let options = {new:true, runValidators:true};
   Car.findByIdAndUpdate(req.params.id, req.body, options)
     .then(car => {
-      console.log(car);
       if(!car) return next(httpErrors(404, 'id not found'));
       res.json(car);
     })
@@ -46,11 +45,3 @@ carRoutes.delete('/api/cars/:id', (req,res,next) => {
     })
     .catch(next);
 });
-
-// delete
-
-// test
-
-// http POST localhost:3000/api/cars < bmw.json
-
-// http patch localhost:3000/api/cars/5a962910bae22a0e271e4b3b year=1969;
