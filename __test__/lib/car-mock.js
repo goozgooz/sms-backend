@@ -14,7 +14,7 @@ let remove = () => Car.remove({});
 const bmw = {
   title: 'really swag new bimmer',
   description: 'this bimmer is a persian\'s dream, it\'s super duper swag',
-  vin: 69696969,
+  vin: '69696969',
   year: 2013,
   make: 'BMW',
   model: 'M3',
@@ -33,7 +33,7 @@ const bmw = {
 const ford ={
   title: 'new cool ford',
   description: 'brand spanking new ford explorer with all the bells and whistles',
-  vin: 123456,
+  vin: '123456',
   year: 2018,
   make: 'Ford',
   model: 'Explorer',
