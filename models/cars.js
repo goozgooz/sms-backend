@@ -3,12 +3,12 @@
 const mongoose = require('mongoose');
 
 const carSchema = new mongoose.Schema({
-  title: {type: String, requried: true},
+  title: {type: String},
   description: {type: String},
   vin: {type: String},
-  year: {type: Number, required: true},
-  make: {type: String, required: true},
-  model: {type: String, required: true},
+  year: {type: Number,},
+  make: {type: String},
+  model: {type: String},
   price: {type: Number},
   condition: {type: String},
   engine: {type: String},
