@@ -9,17 +9,12 @@ const Car = require('../models/cars.js');
 const carRoutes = module.exports = require('express').Router();
 
 carRoutes.get('/api/cars', (req,res,next) => {
-  let inventory = {};
   Car.find({})
     .then(cars => {
-      // for each car returned from DB -> buildup inventory object to send to frontend
       for(let car of cars){
-        // dropbox function to get main photo & number of photos in folder
-        dropbox.getMain(car.photoFolder)
-          .then(console.log)
-          .catch(console.log);
+        return dropbox.getMain(car.photoFolder)
+          .then(console.log);
       }
-      res.json(inventory);
     })
     .catch(next);
 });

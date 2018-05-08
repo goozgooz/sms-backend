@@ -1,0 +1,19 @@
+{
+  "title": "im a ford truck man",
+  "description": "thats all i driiivveee",
+  "vin": "1234",
+  "year": 2000,
+  "make": "Ford",
+  "model": "F150",
+  "price": 234,
+  "condition": "ok",
+  "engine": "V6",
+  "drive": "AWD",
+  "fuel": "Petrol",
+  "odometer": 420,
+  "exteriorColor": "black",
+  "interiorColor": "black",
+  "titleStatus": "clean",
+  "transmission": "manual",
+  "photoFolder": "pets"
+}
