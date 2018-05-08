@@ -14,5 +14,6 @@
   "exteriorColor": "black",
   "interiorColor": "black",
   "titleStatus": "clean",
-  "transmission": "manual"
+  "transmission": "manual",
+  "photoFolder": "pets"
 }

@@ -9,7 +9,6 @@
     "watch": "nodemon index.js",
     "start": "node index.js",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db",
-    "dbon-work": "mkdir -p ./db && mongod --dbpath ./db --nojournal",
     "dboff": "killall mongod"
   },
   "repository": {
