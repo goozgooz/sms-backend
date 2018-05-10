@@ -11,10 +11,21 @@ const carRoutes = module.exports = require('express').Router();
 carRoutes.get('/api/cars', (req,res,next) => {
   Car.find({})
     .then(cars => {
-      for(let car of cars){
-        return dropbox.getMain(car.photoFolder)
-          .then(console.log);
+      let inventory = {};
+      for(let car of cars) {
+        inventory[car._id] = {
+          year: car.year,
+          make: car.make,
+          model: car.model,
+          price: car.price,
+          photoFolder: car.photoFolder,
+        };
       }
+      return inventory;
+    })
+    .then(dropbox.getMain)
+    .then(inventory =>{
+      res.json(inventory);
     })
     .catch(next);
 });
