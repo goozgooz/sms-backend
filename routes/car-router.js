@@ -25,6 +25,7 @@ carRoutes.get('/api/cars', (req,res,next) => {
     })
     .then(dropbox.getMain)
     .then(inventory =>{
+      console.log(inventory);
       res.json(inventory);
     })
     .catch(next);
