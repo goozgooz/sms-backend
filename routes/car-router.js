@@ -46,15 +46,6 @@ carRoutes.post('/api/cars', jsonParser, (req,res,next) => {
 });
 // http post :3000/api/cars < bmw.json;
 
-carRoutes.patch('/api/cars/:id', jsonParser, (req,res,next) => {
-  let options = {new:true, runValidators:true};
-  Car.findByIdAndUpdate(req.params.id, req.body, options)
-    .then(car => {
-      if(!car) return next(httpErrors(404, 'id not found'));
-      res.json(car);
-    })
-    .catch(next);
-});
 
 carRoutes.delete('/api/cars/:id', (req,res,next) => {
   Car.findByIdAndRemove(req.params.id)
