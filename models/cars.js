@@ -3,18 +3,19 @@
 const mongoose = require('mongoose');
 
 const carSchema = new mongoose.Schema({
+  inventoryId: {type: String},
   title: {type: String},
   description: {type: String},
   vin: {type: String},
-  year: {type: Number,},
+  year: {type: String},
   make: {type: String},
   model: {type: String},
-  price: {type: Number},
+  price: {type: String},
   condition: {type: String},
   engine: {type: String},
   drive: {type: String},
   fuel: {type: String},
-  odometer: {type: Number},
+  miles: {type: String},
   exteriorColor: {type: String},
   interiorColor: {type: String},
   titleStatus: {type: String},
